@@ -108,8 +108,8 @@
 			}
 			NSString *name = [responseDictionary objectForKey:@"name"];
 			if([realNamesDictionary objectForKey:username] == nil && name != nil) {
-				[realNamesDictionary setObject:name forKey:username];
 				dispatch_async(dispatch_get_main_queue(), ^{
+					[realNamesDictionary setObject:name forKey:username];
 					[self.tableView reloadData];
 				});
 			}
@@ -138,8 +138,8 @@
 														 scale:2.0
 												   orientation:UIImageOrientationUp];
 					if([imagesDictionary objectForKey:username] == nil) {
-						[imagesDictionary setObject:image forKey:username];
 						dispatch_async(dispatch_get_main_queue(), ^{
+							[imagesDictionary setObject:image forKey:username];
 							[self.tableView reloadData];
 						});
 					}
