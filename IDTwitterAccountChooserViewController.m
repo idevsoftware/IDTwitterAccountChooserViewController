@@ -10,7 +10,7 @@
 #import <Twitter/Twitter.h>
 #import "IDTwitterAccountChooserViewController.h"
 
-#define kTwitterAPIRootURL @"https://api.twitter.com/1/"
+#define kTwitterAPIRootURL @"https://api.twitter.com/1.1/"
 
 @interface IDTwitterAccountChooserContentViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
 	UITableView *tableView;
@@ -94,6 +94,7 @@
 		TWRequest *request = [[TWRequest alloc] initWithURL:url
 												 parameters:parameters
 											  requestMethod:TWRequestMethodGET];
+		[request addAccount:account];
 		[request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
 			if(error != nil && responseData == nil) {
 				NSLog(@"TWRequest error: %@", [error localizedDescription]);
@@ -126,6 +127,7 @@
 				TWRequest *imageRequest = [[TWRequest alloc] initWithURL:imageURL
 															  parameters:nil
 														   requestMethod:TWRequestMethodGET];
+				[imageRequest addAccount:account];
 				[imageRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
 					if(error != nil && responseData == nil) {
 						NSLog(@"TWRequest error: %@", [error localizedDescription]);
