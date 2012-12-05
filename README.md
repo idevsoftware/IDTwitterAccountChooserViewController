@@ -13,7 +13,7 @@ It has a very basic look but it can be easily customized via standard UITableVie
 
 ## How does it works?
 
-Copy and add the ```IDTwitterAccountChooserViewController.h``` and ```IDTwitterAccountChooserViewController.m``` files to your project, and make sure to link against the ```Twitter``` and ``Àccounts``` frameworks.
+Copy and add the ```IDTwitterAccountChooserViewController.h``` and ```IDTwitterAccountChooserViewController.m``` files to your project, and make sure to link against the ```Twitter``` and ```Accounts``` frameworks.
 
 In your own view controller implementation file (```.m```):
 
