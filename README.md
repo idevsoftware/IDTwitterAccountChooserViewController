@@ -44,8 +44,8 @@ if([twitterAccounts count] > 1) {
 If you'd rather use a protocol based delegation pattern instead of a completion handler block:
 
 ```
-// make your view controller conform to the <IDTwitterAccountChooserViewControllerDelegate> Method
-@interface MyOwnViewController () <IDTwitterAccountChooserViewControllerDelegate>
+// make your view controller conform to the <IDTwitterAccountChooserViewControllerDelegate> protocol
+@interface MyOwnViewController <IDTwitterAccountChooserViewControllerDelegate>
 
 ...
 
