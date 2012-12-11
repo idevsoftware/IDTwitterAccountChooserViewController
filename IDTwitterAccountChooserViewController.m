@@ -94,7 +94,7 @@
 		TWRequest *request = [[TWRequest alloc] initWithURL:url
 												 parameters:parameters
 											  requestMethod:TWRequestMethodGET];
-		[request addAccount:account];
+		[request setAccount:account];
 		[request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
 			if(error != nil && responseData == nil) {
 				NSLog(@"TWRequest error: %@", [error localizedDescription]);
@@ -127,7 +127,7 @@
 				TWRequest *imageRequest = [[TWRequest alloc] initWithURL:imageURL
 															  parameters:nil
 														   requestMethod:TWRequestMethodGET];
-				[imageRequest addAccount:account];
+				[imageRequest setAccount:account];
 				[imageRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
 					if(error != nil && responseData == nil) {
 						NSLog(@"TWRequest error: %@", [error localizedDescription]);
