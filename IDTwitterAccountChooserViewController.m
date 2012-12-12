@@ -18,13 +18,13 @@
 	__weak id <IDTwitterAccountChooserViewControllerDelegate> accountChooserDelegate;
 	NSMutableDictionary *imagesDictionary;
 	NSMutableDictionary *realNamesDictionary;
-	__weak IDTwitterAccountChooserViewControllerCompletionHandler completionHandler;
+	IDTwitterAccountChooserViewControllerCompletionHandler completionHandler;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *twitterAccounts;
 @property (nonatomic, weak) id <IDTwitterAccountChooserViewControllerDelegate> accountChooserDelegate;
-@property (nonatomic, weak) IDTwitterAccountChooserViewControllerCompletionHandler completionHandler;
+@property (nonatomic, copy) IDTwitterAccountChooserViewControllerCompletionHandler completionHandler;
 
 @end
 
