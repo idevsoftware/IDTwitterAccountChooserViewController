@@ -125,7 +125,6 @@
                 if([realNamesDictionary objectForKey:username] == nil && name != nil) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [realNamesDictionary setObject:name forKey:username];
-                        NSLog(@"--dict---%@",realNamesDictionary);
                         [self.tableView reloadData];
                     });
                 }
