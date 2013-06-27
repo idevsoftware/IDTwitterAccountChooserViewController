@@ -93,8 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				763CE32F1677F555006B7525 /* IDTwitterAccountChooserViewController.h */,
-				763CE3301677F555006B7525 /* IDTwitterAccountChooserViewController.m */,
 				763CE3191677F469006B7525 /* AppDelegate.h */,
+				763CE3301677F555006B7525 /* IDTwitterAccountChooserViewController.m */,
 				763CE31A1677F469006B7525 /* AppDelegate.m */,
 				763CE32B1677F4A7006B7525 /* RootViewController.h */,
 				763CE32C1677F4A7006B7525 /* RootViewController.m */,
@@ -259,6 +259,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
 				INFOPLIST_FILE = "Demo/Demo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -270,6 +271,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
 				INFOPLIST_FILE = "Demo/Demo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
