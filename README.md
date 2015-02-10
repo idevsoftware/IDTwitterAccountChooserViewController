@@ -7,7 +7,7 @@ Twitter Account Chooser view controller for iOS 6+. Uses a block-based completio
 In iOS 6 and up you can store system-wide Twitter accounts. I looked for an existing Account chooser for when you have multiple accounts and I couldn't find one so I decided to make my own.
 
 ## What does it looks like?
-![IDTwitterAccountChooserViewController](https://github.com/downloads/idevsoftware/IDTwitterAccountChooserViewController/screenshot.png)
+![IDTwitterAccountChooserViewController](screenshot.png)
 
 It has a very basic look but it can be easily customized via standard UITableViewCell subclassing (or whatever your favorite method is).
 
