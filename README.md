@@ -1,10 +1,10 @@
 IDTwitterAccountChooserViewController
 =====================================
 
-Twitter Account Chooser view controller for iOS 5+. Uses a block-based completion handler or a classic protocol-based delegate method.
+Twitter Account Chooser view controller for iOS 6+. Uses a block-based completion handler or a classic protocol-based delegate method.
 
 ## Why?
-In iOS 5 and up you can store system-wide Twitter accounts. I looked for an existing Account chooser for when you have multiple accounts and I couldn't find one so I decided to make my own.
+In iOS 6 and up you can store system-wide Twitter accounts. I looked for an existing Account chooser for when you have multiple accounts and I couldn't find one so I decided to make my own.
 
 ## What does it looks like?
 ![IDTwitterAccountChooserViewController](https://github.com/downloads/idevsoftware/IDTwitterAccountChooserViewController/screenshot.png)
@@ -13,12 +13,12 @@ It has a very basic look but it can be easily customized via standard UITableVie
 
 ## How does it works?
 
-Copy and add the ```IDTwitterAccountChooserViewController.h``` and ```IDTwitterAccountChooserViewController.m``` files to your project, and make sure to link against the ```Twitter``` and ```Accounts``` frameworks.
+Copy and add the ```IDTwitterAccountChooserViewController.h``` and ```IDTwitterAccountChooserViewController.m``` files to your project, and make sure to link against the ```Social``` and ```Accounts``` frameworks.
 
 In your own view controller implementation file (```.m```):
 
 ```
-#import <Twitter/Twitter.h>
+#import <Social/Social.h>
 #import <Accounts/Accounts.h>
 #import "IDTwitterAccountChooserViewController.h"
 
