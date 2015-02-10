@@ -7,7 +7,7 @@
 //
 
 #import <Accounts/Accounts.h>
-#import <Twitter/Twitter.h>
+#import <Social/Social.h>
 #import "IDTwitterAccountChooserViewController.h"
 
 #define kTwitterAPIRootURL @"https://api.twitter.com/1.1/"
@@ -53,6 +53,8 @@
 
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    
 	self.navigationItem.title = NSLocalizedString(@"Choose an Account", @"Choose an Account");
 	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
 																						  target:self
@@ -61,6 +63,8 @@
 
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
 	[self loadMetadataForCellsWithIndexPaths:[self.tableView indexPathsForVisibleRows]];
 }
 
@@ -82,22 +86,26 @@
 
 
 - (void)loadMetadataForCellsWithIndexPaths:(NSArray *)indexPaths {
+    Class slRequest = NSClassFromString(@"SLRequest");
+    
 	for(NSIndexPath *indexPath in indexPaths) {
 		ACAccount *account = [self.twitterAccounts objectAtIndex:indexPath.row];
 		NSString *username = [account username];
+        NSString *userID = ((NSDictionary*)[account valueForKey:@"properties"])[@"user_id"];        
 		if(username == nil || ([imagesDictionary objectForKey:username] != nil && [realNamesDictionary objectForKey:username] != nil))
 			continue;
 		NSURL *url = [NSURL URLWithString:[kTwitterAPIRootURL stringByAppendingString:@"users/show.json"]];
 		NSDictionary *parameters = @{
-			@"screen_name": username
+            @"user_id": userID
 		};
-		TWRequest *request = [[TWRequest alloc] initWithURL:url
-												 parameters:parameters
-											  requestMethod:TWRequestMethodGET];
+		SLRequest *request = [slRequest requestForServiceType:SLServiceTypeTwitter
+                                                requestMethod:SLRequestMethodGET
+                                                          URL:url
+                                                   parameters:parameters];
 		[request setAccount:account];
 		[request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
 			if(error != nil && responseData == nil) {
-				NSLog(@"TWRequest error: %@", [error localizedDescription]);
+				NSLog(@"SLRequest error: %@", [error localizedDescription]);
 				return;
 			}
 			error = nil;
@@ -124,13 +132,14 @@
 																										options:(NSAnchoredSearch | NSBackwardsSearch)
 																										  range:NSMakeRange(0, [profileImageURLString length])];
 				NSURL *imageURL = [NSURL URLWithString:biggerFilenameURLString];
-				TWRequest *imageRequest = [[TWRequest alloc] initWithURL:imageURL
-															  parameters:nil
-														   requestMethod:TWRequestMethodGET];
+				SLRequest *imageRequest = [slRequest requestForServiceType:SLServiceTypeTwitter
+                                                             requestMethod:SLRequestMethodGET
+                                                                       URL:imageURL
+                                                                parameters:nil];
 				[imageRequest setAccount:account];
 				[imageRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
 					if(error != nil && responseData == nil) {
-						NSLog(@"TWRequest error: %@", [error localizedDescription]);
+						NSLog(@"SLRequest error: %@", [error localizedDescription]);
 						return;
 					}
 					UIImage *biggerImage = [UIImage imageWithData:responseData];
@@ -174,6 +183,7 @@
 - (UITableView *)tableView {
 	if(tableView == nil) {
 		tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStyleGrouped];
+        tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 0.01f)]; // removes the extra space above the tableView
 		tableView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 		tableView.autoresizesSubviews = YES;
 		tableView.delegate = self;
