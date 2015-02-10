@@ -17,10 +17,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "6.0"
 
-  s.source       = { 
-	:git => "https://github.com/idevsoftware/IDTwitterAccountChooserViewController.git",
-	:commit => "2f8b1b04fc7db5c0a2cc57c2d9ae60bd62663487",
-	:tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/idevsoftware/IDTwitterAccountChooserViewController.git", :tag => s.version.to_s }
 
   s.source_files = "IDTwitterAccountChooserViewController.{h,m}"
 
